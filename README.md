@@ -8,6 +8,7 @@ This repository contains some sample source code for spring web full stack train
 + Basic concepts 
 + Tools and IDE
 + Spring Annotations
++ [Exercise](01-spring-fundamental\README.md)
 
 
 ## Spring RESTful Web Service
