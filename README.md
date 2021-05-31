@@ -1,17 +1,19 @@
 # Introduction
+
 This repository contains some sample source code for spring web full stack training. It uses java spring boot for backend and Angular for fontend
 
 # Content
 
 ## Spring Fundamental
+
 + Principle in Spring
 + Basic concepts 
 + Tools and IDE
 + Spring Annotations
 + [Exercise](01-spring-fundamental\README.md)
 
-
 ## Spring RESTful Web Service
+
 + MVC Architecture
 + Web Controller.
 + Web MVC with JSP as View
@@ -29,3 +31,21 @@ This repository contains some sample source code for spring web full stack train
 ## Spring Security
 
 ## Spring Data
+
+- Sping Hibenate, JPA
+
+- Create Table
+
+- JPA Repository
+
+- JOIN Table
+
+- Lazy load
+
+- Entity Graph
+
+- Named Query
+
+- Transaction
+
+- Paging & Sorting
