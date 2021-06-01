@@ -13,7 +13,7 @@ import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
 
 @RunWith(SpringRunner.class)
-@WebMvcTest(HelloController.class)
+@WebMvcTest(value = HelloController.class)
 public class HelloControllerWebMvcIntegrationTest {
 
     @Autowired
@@ -31,5 +31,19 @@ public class HelloControllerWebMvcIntegrationTest {
     public void givenAuthRequestOnPrivateService_shouldSucceedWith200() throws Exception {
         mvc.perform(get("/data").contentType(MediaType.APPLICATION_JSON))
           .andExpect(status().isOk());
+    }
+    
+    @WithMockUser(username="abc",roles={"ADMIN"})
+    @Test
+    public void givenAuthRequestOnPrivateServiceWithValidRole_shouldSucceedWith200() throws Exception {
+        mvc.perform(get("/admin").contentType(MediaType.APPLICATION_JSON))
+          .andExpect(status().isOk());
+    }
+    
+    @WithMockUser(username="abc",roles={"USER"})
+    @Test
+    public void givenAuthRequestOnPrivateServiceWithRole_shouldFailWith401() throws Exception {
+        mvc.perform(get("/admin").contentType(MediaType.APPLICATION_JSON))
+          .andExpect(status().isForbidden());
     }
 }

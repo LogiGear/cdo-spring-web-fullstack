@@ -66,8 +66,9 @@ public class BasicWebSecurityConfigurerAdapter extends WebSecurityConfigurerAdap
 
 	@Autowired
 	public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
-		auth.inMemoryAuthentication().withUser("user").password(passwordEncoder().encode("pass"))
-				.authorities("ROLE_USER");
+		auth.inMemoryAuthentication().withUser("user").password(passwordEncoder().encode("pass")).authorities("ROLE_USER").
+		and().
+		withUser("admin").password(passwordEncoder().encode("admin")).authorities("ROLE_ADMIN");
 	}
 
 	@Override
@@ -80,3 +81,14 @@ public class BasicWebSecurityConfigurerAdapter extends WebSecurityConfigurerAdap
 }
 
 #7. Open incognito window http://localhost:8080/swagger-ui.html and test  basicsecurity
+
+#8. Check role 
+Add API to Controller that need role    @PreAuthorize("hasRole('ROLE_ADMIN')")
+    @GetMapping("/admin")
+    public String admin() 
+    {
+        return "Admin";
+    }
+Config global security
+@EnableGlobalMethodSecurity(prePostEnabled = true)
+Open incognito window http://localhost:8080/swagger-ui.html and test  basicsecurity again
