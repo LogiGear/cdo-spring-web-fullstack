@@ -1,0 +1,2 @@
+/* Add two sample username/password: admin/admin and  test/test*/
+INSERT INTO employee (username, password, fullname, role) VALUES ('admin', '$2a$10$y/Al4RNzEvKYSk.vjau2K.SI4y7fM7d9B3B7rKNxtKekUMIiuwkX.', 'CDO Administrator', 'ADMIN'), ('test', '$2a$10$9BgFg.whzHDMSnVFnA2Z/OLL/zQ6FmYFTsSAsrIkqF4EKwINV3.zm', 'Alan Smith', 'USER');
