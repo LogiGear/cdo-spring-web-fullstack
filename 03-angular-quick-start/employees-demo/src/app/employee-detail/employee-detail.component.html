@@ -1,0 +1,12 @@
+<div *ngIf="employee">
+    <h2> {{employee.username | uppercase}} Details</h2>
+    <div>
+        <div class="row"><label>Username:</label><input id="employee-username" value = {{employee.username}} placeHolder="Username" readonly></div>
+        <div class="row"><label>Password:</label><input type="password" id="employee-password" [(ngModel)] = "employee.password" placeHolder="password"></div>
+        <div class="row"><label>Full Name:</label><input id="employee-fullname" [(ngModel)] = "employee.fullname" placeHolder="Full Name"></div>
+        <div class="row"><label>Role:</label><input id="employee-role" [(ngModel)] = "employee.role" placeHolder="Role"></div>
+    </div>
+
+    <button (click)="goBack()">Go back</button>
+    <button (click)="save()">Save</button>
+</div>

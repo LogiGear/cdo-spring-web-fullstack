@@ -1,0 +1,15 @@
+<h2>My Employees</h2>
+<ul class="employees">
+  <li *ngFor= "let employee of employees">
+    <a routerLink="/detail/{{employee.username}}">
+        <span class="badge">
+          {{employee.username}}
+        </span> 
+        {{employee.fullname}}
+    </a>
+  </li>
+</ul>
+
+<app-employee-detail 
+  [employee] = "selectedEmployee">
+</app-employee-detail>
