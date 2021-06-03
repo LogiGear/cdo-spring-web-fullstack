@@ -1,10 +1,13 @@
-#1. Create a new spring boot project with web starter dependency
+#1. Create a new spring boot project with web starter dependency (pom.xml)
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-web</artifactId>
 		</dependency>
+
+#2. Add debug log for more information (application.properties):
+logging.level.org.springframework.security=DEBUG
 		
-#2. Add HelloController with 2 simple REST API
+#3. Add HelloController with 3 simple REST API as following:
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 import io.swagger.v3.oas.annotations.security.SecurityRequirement;
@@ -21,9 +24,15 @@ public class HelloController {
     {
         return "Data";
     }
+	
+	@GetMapping("/admin")
+    public String admin() 
+    {
+        return "Admin";
+    }
 }
 
-#3. add swagger 3 to pom.xml
+#4. add swagger 3 to pom.xml
 <dependency>
     <groupId>org.springdoc</groupId>
     <artifactId>springdoc-openapi-ui</artifactId>
@@ -33,7 +42,7 @@ public class HelloController {
 Now we can access swagger at default location: http://localhost:8080/swagger-ui.html
 Run and test.
 
-#4. Add security dependency
+#5. Add security dependency
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-security</artifactId>
@@ -44,7 +53,7 @@ Run and test.
 			<scope>test</scope>
 		</dependency>
 		
-#5. Config Security
+#6. Config Security
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -83,7 +92,8 @@ public class BasicWebSecurityConfigurerAdapter extends WebSecurityConfigurerAdap
 #7. Open incognito window http://localhost:8080/swagger-ui.html and test  basicsecurity
 
 #8. Check role 
-Add API to Controller that need role    @PreAuthorize("hasRole('ROLE_ADMIN')")
+Add API to Controller that need role    
+	@PreAuthorize("hasRole('ROLE_ADMIN')")
     @GetMapping("/admin")
     public String admin() 
     {
